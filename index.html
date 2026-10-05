@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Вікторина</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+
+  <header>
+    <h1>Вікторина</h1>
+    <nav>
+      <a href="#current-question">Питання</a>
+      <a href="#history">Результати</a>
+    </nav>
+  </header>
+  
+  <main>
+<section id="current-question">
+  <!-- Блок керування (Кнопка і помилка) -->
+  <div id="quiz-controls" style="text-align: center; margin-bottom: 20px;">
+    <button id="start-btn" style="padding: 10px 20px; background-color: var(--primary-color); color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 16px;">
+      Завантажити питання (Нова гра)
+    </button>
+    <p id="loading-text" style="display: none; font-weight: bold; color: var(--accent-color);">Завантаження питань з сервера...</p>
+    <p id="error-message" style="display: none; color: red; font-weight: bold;"></p>
+  </div>
+
+  <!-- Блок самої вікторини (Схований доки питання не завантажаться) -->
+  <div id="quiz-content" style="display: none;">
+    <div class="progress-container">
+      <span class="question-number" id="question-counter">Питання 1 з 10</span>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progress-bar-fill" style="width: 10%;"></div>
+      </div>
+    </div>
+    
+    <h2 id="question-text">Текст питання</h2>
+    
+    <form id="quiz-form" action="#" method="get">
+      <div id="options-container">
+        <!-- Сюди JS буде додавати radio-кнопки динамічно -->
+      </div>
+      
+      <p id="result-message" style="font-weight: bold; margin-top: 15px; display: none;"></p>
+      
+      <div style="margin-top: 20px;">
+        <button type="submit" id="submit-btn" style="padding: 10px 20px; background-color: var(--primary-color); color: white; border: none; border-radius: 6px; cursor: pointer;">Відповісти</button>
+        <button type="button" id="next-btn" style="padding: 10px 20px; background-color: var(--accent-color); color: black; border: none; border-radius: 6px; cursor: pointer; display: none;">Наступне питання</button>
+      </div>
+    </form>
+  </div>
+</section>
+  </main>
+
+  <footer>
+    <p>Авторство: [Дяченко Богдан] &copy; 2026</p>
+  </footer>
+
+  
+</body>
+</html>
