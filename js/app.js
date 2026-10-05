@@ -73,6 +73,7 @@ async function loadData() {
   }
 }
 
+// Функція рендеру поточного питання (Безпечна версія без innerHTML для опцій)
 function renderQuestion() {
   const currentData = quizQuestions[currentQuestionIndex];
   
@@ -89,10 +90,21 @@ function renderQuestion() {
     const div = document.createElement('div');
     div.style.marginBottom = '10px';
     
-    div.innerHTML = `
-      <input type="radio" id="option-${index}" name="quiz-option" value="${option}" required>
-      <label for="option-${index}">${option}</label>
-    `;
+    // БЕЗПЕЧНЕ СТВОРЕННЯ INPUT (Без innerHTML, щоб лапки не ламали value)
+    const input = document.createElement('input');
+    input.type = 'radio';
+    input.id = `option-${index}`;
+    input.name = 'quiz-option';
+    input.value = option; // Присвоєння через властивість захищає від зламу розмітки
+    input.required = true;
+    
+    // БЕЗПЕЧНЕ СТВОРЕННЯ LABEL
+    const label = document.createElement('label');
+    label.htmlFor = `option-${index}`;
+    label.textContent = option; // textContent екранує будь-які HTML-теги та спецсимволи
+    
+    // Додаємо згенеровані елементи у div, а div — у контейнер
+    div.append(input, label);
     optionsContainer.append(div);
   });
 }
